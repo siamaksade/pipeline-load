@@ -5,6 +5,7 @@ pr_list=$(tkn pr list --no-headers | awk '{print $NF}')
 pending=0
 running=0
 completed=0
+failed=0
 
 for p in $pr_list; do
     if [[ "$p" == "---" ]]; then
@@ -13,6 +14,8 @@ for p in $pr_list; do
         ((running++))
     elif [[ "$p" == "Succeeded" ]]; then
         ((completed++))
+    elif [[ "$p" == "Failed" ]]; then
+        ((failed++))
     else
         echo "Unknown status: $p"
     fi
@@ -22,3 +25,4 @@ done
 echo "Pending: $pending"
 echo "Running: $running"
 echo "Completed: $completed"
+echo "Failed: $failed"
