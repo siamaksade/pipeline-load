@@ -10,6 +10,6 @@ spec:
   steps:
     - name: wait
       image: registry.access.redhat.com/ubi8/ubi-minimal
-      command: [sleep"]
+      command: ["sleep"]
       args:
         - $(params.seconds)
