@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: wait
+spec:
+  params:
+    - name: seconds
+      description: the second operand
+      default: "5"
+  steps:
+    - name: wait
+      image: registry.access.redhat.com/ubi8/ubi-minimal
+      command: [sleep"]
+      args:
+        - $(params.seconds)

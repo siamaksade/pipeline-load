@@ -27,6 +27,15 @@ spec:
           value: $(tasks.first-add.results.sum)
         - name: second
           value: $(params.third)
+    - name: compute
+      taskRef:
+        name: wait
+      params:
+        - name: seconds
+          value: "5"
+      runAfter:
+        - first-add
+        - second-add
   results:
     - name: sum
       description: the sum of all three operands
